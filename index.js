@@ -2,18 +2,21 @@ const express = require ('express');
 
 const app = express();
 
+const connectDB = require('./db/connect');
+
 const port = 8000;
 
 //-----Routes---------//
 app.use('/', require('./routes/index'));
 
 //-----Start Port---------//
-app.listen(port, function(err){
-    if(err){
-        // console.log('Error: ',err);
-        console.log(`Error :  ${err}`)
+const start = async () => {
+    try {
+      // console.log(process.env.MONGO_URI)
+      await connectDB("mongodb://localhost/products")
+      app.listen(port, console.log(`server is running on ${port}...`))
+    } catch (error) {
+      console.log(error)
     }
-
-    console.log(`Server is running on port: ${port}`);
-
-})
+  }
+  start();
