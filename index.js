@@ -6,8 +6,10 @@ const connectDB = require('./db/connect');
 
 const port = 8000;
 
+app.use(express.json())
+
 //-----Routes---------//
-app.use('/', require('./routes/index'));
+app.use('/', require('./routes/product'));
 
 //-----Start Port---------//
 const start = async () => {
