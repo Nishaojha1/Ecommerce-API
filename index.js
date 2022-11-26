@@ -6,7 +6,7 @@ const connectDB = require('./db/connect');
 
 const port = 8000;
 
-app.use(express.json())
+app.use(express.json());
 
 //-----Routes---------//
 app.use('/', require('./routes/product'));
